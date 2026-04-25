@@ -1,0 +1,7 @@
+frontend/node_modules
+frontend/dist
+.git
+__pycache__
+*.pyc
+faiss_indexes
+.env
