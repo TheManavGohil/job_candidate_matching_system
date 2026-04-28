@@ -6,4 +6,3 @@ __pycache__/
 faiss_indexes/
 frontend/node_modules/
 frontend/dist/
-git.md
