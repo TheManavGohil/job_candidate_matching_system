@@ -11,16 +11,23 @@ class Settings(BaseSettings):
     # Database
     DATABASE_URL: str = os.getenv(
         "DATABASE_URL",
-        "postgresql://matchuser:matchpass@localhost:5432/matchdb",
+        "postgresql://localhost:5432/matchdb",
     )
 
-    # Redis
-    REDIS_URL: str = os.getenv("REDIS_URL", "redis://localhost:6379/0")
+    # Redis (SSL-ready for Azure)
+    REDIS_URL: str = os.getenv(
+        "REDIS_URL",
+        "rediss://localhost:6379/0",
+    )
 
-    # Celery
-    CELERY_BROKER_URL: str = os.getenv("CELERY_BROKER_URL", "redis://localhost:6379/1")
+    # Celery (reuse Redis URL by default)
+    CELERY_BROKER_URL: str = os.getenv(
+        "CELERY_BROKER_URL",
+        REDIS_URL,
+    )
     CELERY_RESULT_BACKEND: str = os.getenv(
-        "CELERY_RESULT_BACKEND", "redis://localhost:6379/2"
+        "CELERY_RESULT_BACKEND",
+        REDIS_URL,
     )
 
     # Embedding model
@@ -45,7 +52,12 @@ class Settings(BaseSettings):
 
     # API
     API_PREFIX: str = "/api"
-    CORS_ORIGINS: list = ["http://localhost:3000", "http://localhost:5173"]
+
+    # CORS (env-based for cloud flexibility)
+    CORS_ORIGINS: list = os.getenv(
+        "CORS_ORIGINS",
+        "http://localhost:3000,http://localhost:5173",
+    ).split(",")
 
     class Config:
         env_file = ".env"
