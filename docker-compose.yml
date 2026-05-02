@@ -1,0 +1,111 @@
+services:
+  # ── PostgreSQL ──────────────────────────────────────────────
+  db:
+    image: pgvector/pgvector:pg16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: matcher
+      POSTGRES_PASSWORD: matcher_secret
+      POSTGRES_DB: matcher_db
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - matchnet
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U matcher -d matcher_db"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  # ── Redis ───────────────────────────────────────────────────
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    volumes:
+      - redisdata:/data
+    networks:
+      - matchnet
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  # ── Qdrant Vector DB (self-hosted) ─────────────────────────
+  qdrant:
+    image: qdrant/qdrant:v1.12.1
+    restart: unless-stopped
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrantdata:/qdrant/storage
+    networks:
+      - matchnet
+    healthcheck:
+      test: ["CMD-SHELL", "bash -c '</dev/tcp/localhost/6333' 2>/dev/null && echo ok || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 15
+
+  # ── FastAPI ─────────────────────────────────────────────────
+  api:
+    image: assignment_v2-api
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://matcher:matcher_secret@db:5432/matcher_db
+      REDIS_URL: redis://redis:6379/0
+      QDRANT_URL: http://qdrant:6333
+    networks:
+      - matchnet
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      qdrant:
+        condition: service_healthy
+
+  # ── Celery Worker ───────────────────────────────────────────
+  worker:
+    image: assignment_v2-worker
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://matcher:matcher_secret@db:5432/matcher_db
+      REDIS_URL: redis://redis:6379/0
+      QDRANT_URL: http://qdrant:6333
+    networks:
+      - matchnet
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      qdrant:
+        condition: service_healthy
+
+  # ── Next.js Frontend ───────────────────────────────────────
+  frontend:
+    image: assignment_v2-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_URL: ""
+      NEXT_PUBLIC_DEFAULT_API_KEY: "matchiq-default-key-2024"
+    networks:
+      - matchnet
+    depends_on:
+      - api
+
+networks:
+  matchnet:
+    driver: bridge
+
+volumes:
+  pgdata:
+  redisdata:
+  qdrantdata:

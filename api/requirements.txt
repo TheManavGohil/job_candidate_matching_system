@@ -1,0 +1,47 @@
+# ── Web framework ──
+fastapi==0.115.12
+uvicorn[standard]==0.34.2
+python-multipart==0.0.20
+
+# ── Async tasks ──
+celery[redis]==5.4.0
+redis==5.2.1
+
+# ── Database ──
+sqlalchemy[asyncio]==2.0.36
+asyncpg==0.30.0
+psycopg2-binary==2.9.10
+alembic==1.14.1
+
+# ── Validation / config ──
+pydantic==2.10.6
+pydantic-settings==2.7.1
+
+# ── Embeddings ──
+sentence-transformers==3.4.1
+
+# ── NLP / NER ──
+spacy==3.8.4
+
+# ── Document parsing ──
+python-docx==1.1.2
+llama-cloud==0.1.8
+pdfplumber==0.11.4
+
+# ── LLM ──
+groq==0.13.1
+
+# ── Vector DB ──
+qdrant-client==1.13.3
+
+# ── Auth / crypto ──
+python-jose[cryptography]==3.3.0
+passlib==1.7.4
+
+# ── HTTP client ──
+httpx==0.28.1
+
+# ── Numeric ──
+numpy==2.2.3
+pandas==2.2.3
+openpyxl==3.1.5

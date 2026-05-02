@@ -1,0 +1,24 @@
+# Senior Frontend Engineer (React/Next.js)
+
+## About the Role
+We're seeking a creative and technically proficient Frontend Engineer to build beautiful, responsive, and high-performance user interfaces for our AI matching platform.
+
+## Required Skills
+- Deep expertise in React and Next.js (App Router preferred)
+- Mastery of TypeScript and modern JavaScript (ES6+)
+- Advanced CSS knowledge (Tailwind CSS, CSS Modules, or Styled Components)
+- Experience with state management (Zustand, Redux, or React Context)
+- Familiarity with data visualization libraries (D3.js, Chart.js, or Recharts)
+- Understanding of web performance optimization techniques
+
+## Qualifications
+- 4+ years of experience in frontend development
+- Strong portfolio of modern, accessible web applications
+- Experience working with REST APIs and WebSocket connections
+
+## Responsibilities
+- Develop new user-facing features using React.js and Next.js
+- Build reusable components and frontend libraries for future use
+- Optimize applications for maximum speed and scalability across devices
+- Ensure the technical feasibility of UI/UX designs
+- Collaborate with backend engineers to define and integrate APIs

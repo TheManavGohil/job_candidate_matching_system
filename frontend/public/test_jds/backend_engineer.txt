@@ -1,0 +1,24 @@
+# Senior Backend Engineer (Python)
+
+## About the Role
+We are looking for a Senior Backend Engineer to join our core infrastructure team. You will be responsible for building scalable APIs, managing distributed task queues, and optimizing database performance.
+
+## Required Skills
+- Expert knowledge of Python (3.10+)
+- Extensive experience with FastAPI or Flask
+- Strong understanding of PostgreSQL and database optimization
+- Hands-on experience with Redis and Celery for background tasks
+- Experience with Docker and container orchestration
+- Familiarity with async programming in Python
+
+## Qualifications
+- BS/MS in Computer Science or related field
+- 5+ years of professional backend development experience
+- Proven track record of building and maintaining production-grade systems
+
+## Responsibilities
+- Design and implement high-performance RESTful APIs
+- Maintain and scale our data pipeline using Celery and Redis
+- Collaborate with frontend engineers to integrate user-facing elements
+- Implement security and data protection measures
+- Optimize applications for maximum speed and scalability

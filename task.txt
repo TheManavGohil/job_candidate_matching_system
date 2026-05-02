@@ -1,0 +1,41 @@
+Tech Assignment – Job-Candidate Matching Engine
+Objective
+Given a set of job descriptions and candidate profiles, build a system that ranks candidates for each role and explains why each candidate was ranked the way they were. The matching logic is entirely up to you — that’s the point.
+Language & Stack
+Python is required
+FastAPI, Flask or Django for the API
+All other choices are open
+What You're Free To Do
+Embeddings, keyword overlap, weighted scoring, LLMs, hybrid approaches — no prescribed method. Choose what you believe works best and be prepared to justify your decisions.
+Core Requirements
+Ingest job descriptions and candidate profiles via API or file upload (JSON, CSV, plain text — schema design is up to you)
+For each job description, produce a ranked list of candidates, a score for each candidate, and a human-readable explanation of the ranking
+The explanation must be meaningful and should clearly communicate the reasoning without requiring access to the raw data
+Expose the following API endpoints(you may go beyond these, as you see fit)
+GET /match/{jd_id} → returns ranked candidates
+GET /match/{jd_id}/{candidate_id} → returns detailed reasoning for that match
+Docker deployment; the system should run with a single Docker command
+Provided Sample Data
+You may use the following sample datasets for testing
+Sample Candidate Data
+Job Descriptions
+Brownie Points
+Design the system to scale to at least 100k candidates per run and clearly document how it would scale, including bottlenecks and tradeoffs
+Build a frontend (any framework) that allows uploading JDs and candidate profiles, triggering the matching process, and browsing ranked results with explanations without relying on Postman
+Deploy your project (any cloud or hosting platform) and provide access or instructions to run it live
+
+
+What We're Evaluating
+Matching approach — is it thoughtful, effective, and appropriate for the problem
+Quality of explanations — are they genuinely useful or just superficial
+Scalability thinking — does the architecture hold up at high volume, where does it break, and how would you improve it
+Edge case handling — incomplete profiles, vague JDs, missing fields
+Code quality and documentation
+Tradeoff awareness — what you chose not to implement and why
+Submission Requirements
+GitHub or GitLab repository with a clear README explaining your matching approach, design decisions, and limitations
+Include a section detailing how the system would scale to 100k candidates and what architectural changes would be required
+Include sample job descriptions and candidate profiles used for testing
+Include a short video demo showing candidate ranking and explanation output
+Context — Why This Matters
+Matching candidates to roles is central to our work. There is no perfect solution — we are evaluating how you think, what signals you prioritize, and how transparently you handle limitations

@@ -1,0 +1,24 @@
+# Machine Learning Engineer / Data Scientist
+
+## About the Role
+Join our AI team to develop and deploy machine learning models that power our candidate matching engine. You will work on NLP tasks, vector embeddings, and ranking algorithms.
+
+## Required Skills
+- Strong proficiency in Python and ML libraries (PyTorch, TensorFlow, Scikit-learn)
+- Deep understanding of NLP (Transformers, BERT, LLMs, LangChain)
+- Experience with Vector Databases (Qdrant, Pinecone, or Milvus)
+- Solid foundation in statistics and linear algebra
+- Experience with data processing libraries (Pandas, NumPy)
+- Familiarity with deploying ML models in production (BentoML, Ray Serve, or FastAPI)
+
+## Qualifications
+- MS or PhD in Computer Science, Math, or a related quantitative field
+- 3+ years of experience building and deploying ML models
+- Experience working with large-scale datasets
+
+## Responsibilities
+- Develop and optimize NLP models for semantic search and ranking
+- Implement and experiment with state-of-the-art embedding techniques
+- Build data pipelines for training and evaluating models
+- Collaborate with the product team to define and implement new AI features
+- Stay up-to-date with latest research in NLP and Information Retrieval
