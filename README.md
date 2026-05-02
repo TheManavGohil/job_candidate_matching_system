@@ -112,3 +112,6 @@ docker-compose exec api pytest tests/ -v
 - **Tradeoffs:** 
   - We explicitly chose *not* to use LLMs (like GPT-4) for the explanation generation. While LLMs produce more conversational text, they introduce significant latency, token costs, and non-deterministic results. The template-based approach guarantees instant, accurate, and free explanations.
   - The FAISS index is currently rebuilt periodically by Celery. In a massive enterprise system with constant real-time uploads, a streaming vector database (like Qdrant) would replace this batch-rebuild process.
+
+
+currently building a complete different architecture in v2 branch, still haven't completed it though !
