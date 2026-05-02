@@ -49,6 +49,7 @@ services:
 
   # ── FastAPI ─────────────────────────────────────────────────
   api:
+    build: ./api
     image: assignment_v2-api
     restart: unless-stopped
     ports:
@@ -70,6 +71,9 @@ services:
 
   # ── Celery Worker ───────────────────────────────────────────
   worker:
+    build:
+      context: ./api
+      dockerfile: Dockerfile.worker
     image: assignment_v2-worker
     restart: unless-stopped
     env_file: .env
@@ -89,6 +93,7 @@ services:
 
   # ── Next.js Frontend ───────────────────────────────────────
   frontend:
+    build: ./frontend
     image: assignment_v2-frontend
     restart: unless-stopped
     ports:
