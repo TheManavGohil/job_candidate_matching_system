@@ -301,9 +301,15 @@ For truly massive scale (1M+), replace Redis as broker with **Kafka** for durabl
 
 ## Deployment
 
-The system is **fully deployed on Microsoft Azure** running on a single Linux Virtual Machine using Docker Compose. All services (API, Celery Worker, PostgreSQL, Redis, Qdrant, Next.js frontend) run as containers within a shared Docker bridge network.
+### Live Demo (Azure)
+The system is currently deployed live on a Microsoft Azure Virtual Machine. You can access it here:
 
-### Azure VM Deployment
+*   **Web Application (Frontend):** [http://98.70.35.50:3000](http://98.70.35.50:3000)
+*   **API Documentation (Swagger):** [http://98.70.35.50:8000/docs](http://98.70.35.50:8000/docs)
+
+*(Note: The deployment uses raw IP addresses, so it runs on HTTP. Ensure your browser doesn't automatically force HTTPS).*
+
+### Azure VM Deployment Setup
 
 The deployment uses a single VM approach with all containers managed by Docker Compose. This is the simplest production-ready configuration: one VM, one `docker compose up -d`, everything running.
 
